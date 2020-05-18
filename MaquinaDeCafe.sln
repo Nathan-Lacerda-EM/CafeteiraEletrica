@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoffeeMakerApi", "CoffeeMakerApi\CoffeeMakerApi.csproj", "{9B961DE5-5219-4A36-BF3D-A9ACACBB47DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoffeeMaker", "CoffeeMaker\CoffeeMaker.csproj", "{13F0E9D0-AB61-4DBB-B6CD-449C14B39D7E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B961DE5-5219-4A36-BF3D-A9ACACBB47DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B961DE5-5219-4A36-BF3D-A9ACACBB47DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B961DE5-5219-4A36-BF3D-A9ACACBB47DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B961DE5-5219-4A36-BF3D-A9ACACBB47DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13F0E9D0-AB61-4DBB-B6CD-449C14B39D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13F0E9D0-AB61-4DBB-B6CD-449C14B39D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13F0E9D0-AB61-4DBB-B6CD-449C14B39D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13F0E9D0-AB61-4DBB-B6CD-449C14B39D7E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {623B698C-D7D7-4AE7-A62E-E2D6A760DDDA}
+	EndGlobalSection
+EndGlobal

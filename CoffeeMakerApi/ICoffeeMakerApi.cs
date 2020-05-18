@@ -74,7 +74,7 @@ namespace CoffeeMakerApi
         BrewButtonStatus GetBrewButtonStatus();
 
         /*  Esta função liga ou desliga a resistência de aquecimento no boiler.*/
-        void SetBoilerState(BoilerState s);
+        void SetBoilerState(BoilerState boilerState);
 
         /*  Esta função liga ou desliga a resistência na  * chapa de aquecimento.*/
         void SetWarmerState(WarmerState warmerState);

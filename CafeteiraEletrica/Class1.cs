@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoffeeMaker
+namespace CafeteiraEletrica
 {
     public class Class1
     {

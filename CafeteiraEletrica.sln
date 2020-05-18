@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoffeeMakerApi", "CoffeeMakerApi\CoffeeMakerApi.csproj", "{9B961DE5-5219-4A36-BF3D-A9ACACBB47DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoffeeMaker", "CoffeeMaker\CoffeeMaker.csproj", "{13F0E9D0-AB61-4DBB-B6CD-449C14B39D7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafeteiraEletrica", "CafeteiraEletrica\CafeteiraEletrica.csproj", "{C4A08ED2-19B1-4BE4-AC0F-9676F420C006}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{9B961DE5-5219-4A36-BF3D-A9ACACBB47DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B961DE5-5219-4A36-BF3D-A9ACACBB47DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B961DE5-5219-4A36-BF3D-A9ACACBB47DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{13F0E9D0-AB61-4DBB-B6CD-449C14B39D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{13F0E9D0-AB61-4DBB-B6CD-449C14B39D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{13F0E9D0-AB61-4DBB-B6CD-449C14B39D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{13F0E9D0-AB61-4DBB-B6CD-449C14B39D7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4A08ED2-19B1-4BE4-AC0F-9676F420C006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4A08ED2-19B1-4BE4-AC0F-9676F420C006}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4A08ED2-19B1-4BE4-AC0F-9676F420C006}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4A08ED2-19B1-4BE4-AC0F-9676F420C006}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

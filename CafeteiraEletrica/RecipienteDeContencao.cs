@@ -8,5 +8,11 @@ namespace CafeteiraEletrica
 {
     class RecipienteDeContencao
     {
+        public bool EstaPronto { get; set; }
+
+        public void Inicie()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -8,9 +8,33 @@ namespace CafeteiraEletrica
 {
     class FonteDeAguaQuente
     {
+        private RecipienteDeContencao _recipienteDeContencao;
+        private InterfaceDoUsuario _interfaceDoUsuario;
+
+        void ConcluirPreparo()
+        {
+            _recipienteDeContencao.ConcluaPreparo();
+            _interfaceDoUsuario.ConcluaPreparo();
+        }
+
         internal bool EstaPronto { get; set; }
 
         internal void Inicie()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void SuspendaFluxoDeAgua()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void RetomeFluxoDeAgua()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void ConcluaPreparo()
         {
             throw new NotImplementedException();
         }

@@ -19,7 +19,7 @@ namespace CafeteiraEletrica
 
         internal bool EstaPronto { get; set; }
 
-        internal void Inicie()
+        internal void Inicia()
         {
             throw new NotImplementedException();
         }

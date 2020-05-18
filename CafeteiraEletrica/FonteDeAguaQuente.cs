@@ -8,9 +8,9 @@ namespace CafeteiraEletrica
 {
     class FonteDeAguaQuente
     {
-        public bool EstaPronto { get; set; }
+        internal bool EstaPronto { get; set; }
 
-        public void Inicie()
+        internal void Inicie()
         {
             throw new NotImplementedException();
         }

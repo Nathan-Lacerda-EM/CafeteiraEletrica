@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CafeteiraEletrica
 {
-    public class Class1
+    class RecipienteDeContencao
     {
     }
 }

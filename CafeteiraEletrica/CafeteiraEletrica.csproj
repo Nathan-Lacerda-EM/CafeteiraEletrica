@@ -43,8 +43,17 @@
   <ItemGroup>
     <Compile Include="FonteDeAguaQuente.cs" />
     <Compile Include="InterfaceDoUsuario.cs" />
+    <Compile Include="M4FonteDeAguaQuente.cs" />
+    <Compile Include="M4InterfaceDeUsuario.cs" />
+    <Compile Include="M4RecipienteDeContencao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecipienteDeContencao.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CoffeeMakerApi\CoffeeMakerApi.csproj">
+      <Project>{9B961DE5-5219-4A36-BF3D-A9ACACBB47DF}</Project>
+      <Name>CoffeeMakerApi</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

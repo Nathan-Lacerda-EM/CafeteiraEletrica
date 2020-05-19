@@ -6,28 +6,34 @@ using System.Threading.Tasks;
 
 namespace CafeteiraEletrica
 {
-    class InterfaceDoUsuario
+    abstract class InterfaceDoUsuario
     {
         private FonteDeAguaQuente _fonteDeAguaQuente;
         private RecipienteDeContencao _recipienteDeContencao;
+        protected bool EstaCompleto;
+
+        public InterfaceDoUsuario()
+        {
+            EstaCompleto = true;
+        }
 
         void Iniciar()
         {
             if (_fonteDeAguaQuente.EstaPronto && _recipienteDeContencao.EstaPronto)
             {
+                EstaCompleto = false;
                 _fonteDeAguaQuente.Inicia();
                 _recipienteDeContencao.Inicia();
             }
         }
 
-        internal void ConcluaPreparo()
+        protected internal void ConcluaPreparo()
         {
-            throw new NotImplementedException();
+            EstaCompleto = true;
+            ConcluirPreparo();
         }
 
-        internal void Finaliza()
-        {
-            throw new NotImplementedException();
-        }
+        private protected abstract void ConcluirPreparo();
+        protected internal abstract void Finaliza();
     }
 }

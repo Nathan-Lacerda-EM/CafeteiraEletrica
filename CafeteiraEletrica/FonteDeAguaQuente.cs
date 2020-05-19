@@ -6,37 +6,29 @@ using System.Threading.Tasks;
 
 namespace CafeteiraEletrica
 {
-    class FonteDeAguaQuente
+    abstract class FonteDeAguaQuente
     {
         private RecipienteDeContencao _recipienteDeContencao;
         private InterfaceDoUsuario _interfaceDoUsuario;
+        protected bool EstaPreparando;
 
-        void ConcluirPreparo()
+        private protected void ConcluirPreparo()
         {
+            EstaPreparando = false;
             _recipienteDeContencao.ConcluaPreparo();
             _interfaceDoUsuario.ConcluaPreparo();
         }
 
-        internal bool EstaPronto { get; set; }
-
         internal void Inicia()
         {
-            throw new NotImplementedException();
+            EstaPreparando = true;
+            ComecaPreparo();
         }
 
-        internal void SuspendaFluxoDeAgua()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void RetomeFluxoDeAgua()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void ConcluaPreparo()
-        {
-            throw new NotImplementedException();
-        }
+        protected internal abstract bool EstaPronto { get; }
+        private protected abstract void ComecaPreparo();
+        protected internal abstract void SuspendaFluxoDeAgua();
+        protected internal abstract void RetomeFluxoDeAgua();
+        protected internal abstract void ConcluaPreparo();
     }
 }

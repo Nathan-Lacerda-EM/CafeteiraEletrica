@@ -19,23 +19,22 @@ namespace CafeteiraEletrica
             _api.SetBoilerState(BoilerState.ON);
         }
 
-        protected internal override void SuspendaFluxoDeAgua()
+        private protected override void SuspendaFluxoDeAgua()
         {
             _api.SetBoilerState(BoilerState.OFF);
             _api.SetReliefValveState(ReliefValveState.OPEN);
         }
 
-        protected internal override void RetomeFluxoDeAgua()
+        private protected override void RetomeFluxoDeAgua()
         {
             _api.SetBoilerState(BoilerState.ON);
             _api.SetReliefValveState(ReliefValveState.CLOSED);
         }
 
-        protected internal override void ConcluaPreparo()
+        private protected override void ConcluaPreparo()
         {
             _api.SetReliefValveState(ReliefValveState.OPEN);
             _api.SetBoilerState(BoilerState.OFF);
-            ConcluirPreparo();
         }
     }
 }

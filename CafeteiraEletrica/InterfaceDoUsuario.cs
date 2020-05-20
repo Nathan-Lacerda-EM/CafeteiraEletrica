@@ -10,30 +10,23 @@ namespace CafeteiraEletrica
     {
         private FonteDeAguaQuente _fonteDeAguaQuente;
         private RecipienteDeContencao _recipienteDeContencao;
-        protected bool EstaCompleto;
 
-        public InterfaceDoUsuario()
-        {
-            EstaCompleto = true;
-        }
 
         void Iniciar()
         {
             if (_fonteDeAguaQuente.EstaPronto && _recipienteDeContencao.EstaPronto)
             {
-                EstaCompleto = false;
-                _fonteDeAguaQuente.Inicia();
-                _recipienteDeContencao.Inicia();
+                _fonteDeAguaQuente.IniciarPreparo();
+                _recipienteDeContencao.IniciarPreparo();
             }
         }
 
-        protected internal void ConcluaPreparo()
+        protected internal void ConcluirPreparo()
         {
-            EstaCompleto = true;
-            ConcluirPreparo();
+            ConcluaPreparo();
         }
 
-        private protected abstract void ConcluirPreparo();
+        private protected abstract void ConcluaPreparo();
         protected internal abstract void Finaliza();
     }
 }

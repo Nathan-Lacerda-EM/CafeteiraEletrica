@@ -11,7 +11,7 @@ namespace CafeteiraEletrica
     {
         private ICoffeeMakerApi _api;
 
-        private protected override void ConcluirPreparo()
+        private protected override void ConcluaPreparo()
         {
             _api.SetIndicatorState(IndicatorState.ON);
         }

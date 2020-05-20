@@ -10,52 +10,37 @@ namespace CafeteiraEletrica
     {
         private FonteDeAguaQuente _fonteDeAguaQuente;
         private InterfaceDoUsuario _interfaceDoUsuario;
-        protected bool EstaPreparando;
-        protected bool EstaConcluido;
-
-        public RecipienteDeContencao()
+        
+        protected internal void IniciarPreparo()
         {
-            EstaPreparando = false;
-            EstaConcluido = true;
-        }
-
-        protected internal void Inicia()
-        {
-            EstaPreparando = true;
-            EstaConcluido = false;
             ComecaPreparo();
         }
 
-        void SuspenderFluxoDeAgua()
+        protected internal void ConcluirPreparo()
         {
-            _fonteDeAguaQuente.SuspendaFluxoDeAgua();
-            SuspendaPreparo();
+            _fonteDeAguaQuente.ConcluirPreparo();
+            _interfaceDoUsuario.ConcluirPreparo();
         }
 
-        void RetomarFluxoDeAgua()
+        private protected void SuspenderFluxoDeAgua()
         {
-            _fonteDeAguaQuente.RetomeFluxoDeAgua();
-            RetomeFluxoDeAgua();
+            _fonteDeAguaQuente.SuspenderFluxoDeAgua();
         }
 
-        private protected void ConcluirPreparo()
+        private protected void RetomarFluxoDeAgua()
         {
-            EstaPreparando = false;
-            _fonteDeAguaQuente.ConcluaPreparo();
-            _interfaceDoUsuario.ConcluaPreparo();
+            _fonteDeAguaQuente.RetomarFluxoDeAgua();
         }
 
-        private protected void Finalizar()
+        private protected void Finalize()
         {
-            EstaConcluido = true;
             _interfaceDoUsuario.Finaliza();
         }
 
         protected internal abstract bool EstaPronto { get; }
         private protected abstract void ComecaPreparo();
         private protected abstract void SuspendaPreparo();
-        private protected abstract void RetomeFluxoDeAgua();
-        protected internal abstract void ConcluaPreparo();
-        private protected abstract void Finalize();
+        private protected abstract void RetomePreparo();
+        private protected abstract void Finalizar();
     }
 }

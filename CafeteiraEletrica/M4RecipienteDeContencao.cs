@@ -13,33 +13,37 @@ namespace CafeteiraEletrica
         protected internal override bool EstaPronto => _api.GetWarmerPlateStatus() == WarmerPlateStatus.POT_EMPTY;
         private protected override void ComecaPreparo()
         {
-            _api.SetWarmerState(WarmerState.ON);
+            if (_api.GetWarmerPlateStatus() == WarmerPlateStatus.POT_EMPTY)
+            {
+                _api.SetWarmerState(WarmerState.ON);
+            }
         }
 
         private protected override void SuspendaPreparo()
         {
-            _api.SetWarmerState(WarmerState.OFF);
-        }
-
-        private protected override void RetomeFluxoDeAgua()
-        {
-            _api.SetWarmerState(WarmerState.ON);
-        }
-
-        protected internal override void ConcluaPreparo()
-        {
-            if (EstaPreparando)
+            if (_api.GetWarmerPlateStatus() == WarmerPlateStatus.WARMER_EMPTY)
             {
-                ConcluirPreparo();
+                _api.SetWarmerState(WarmerState.OFF);
+                SuspenderFluxoDeAgua();
             }
         }
 
-        private protected override void Finalize()
+        private protected override void RetomePreparo()
         {
-            if (EstaConcluido) return;
+            if (_api.GetWarmerPlateStatus() == WarmerPlateStatus.POT_NOT_EMPTY)
+            {
+                _api.SetWarmerState(WarmerState.ON);
+                RetomarFluxoDeAgua();
+            }
+        }
 
-            Finalizar();
-            _api.SetWarmerState(WarmerState.OFF);
+        private protected override void Finalizar()
+        {
+            if (_api.GetWarmerPlateStatus() == WarmerPlateStatus.POT_EMPTY)
+            {
+                _api.SetWarmerState(WarmerState.OFF);
+                Finalize();
+            }
         }
     }
 }

@@ -121,7 +121,7 @@
   <ItemGroup>
     <Compile Include="Steps\CicloDeProducaoDeCafeStep.cs" />
     <Compile Include="Steps\EspecificacaoDaCafeteiraEletricaStep.cs" />
-    <Compile Include="Stubs\CoffeeMakerApi.cs" />
+    <Compile Include="Stubs\CoffeeMakerApiStub.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

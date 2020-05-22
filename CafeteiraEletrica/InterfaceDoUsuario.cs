@@ -11,22 +11,13 @@ namespace CafeteiraEletrica
         private FonteDeAguaQuente _fonteDeAguaQuente;
         private RecipienteDeContencao _recipienteDeContencao;
 
-
         void Iniciar()
         {
             if (_fonteDeAguaQuente.EstaPronto && _recipienteDeContencao.EstaPronto)
             {
-                _fonteDeAguaQuente.IniciarPreparo();
-                _recipienteDeContencao.IniciarPreparo();
+
             }
         }
 
-        protected internal void ConcluirPreparo()
-        {
-            ConcluaPreparo();
-        }
-
-        private protected abstract void ConcluaPreparo();
-        protected internal abstract void Finaliza();
     }
 }

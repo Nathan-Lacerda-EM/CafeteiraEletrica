@@ -1,6 +1,6 @@
 ﻿# language: pt-BR
 
-Funcionalidade: Ciclo de producão de caf
+Funcionalidade: Ciclo de producão de café
 
 Cenário: Ciclo de preparação do café
 	Dado uma cafeteira elétrica em perfeito funcionamento

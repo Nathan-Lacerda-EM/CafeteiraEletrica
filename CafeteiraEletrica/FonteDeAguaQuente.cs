@@ -13,6 +13,6 @@ namespace CafeteiraEletrica
 
         protected internal abstract bool EstaPronto { get; }
 
-       
+
     }
 }

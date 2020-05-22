@@ -7,11 +7,11 @@ using CoffeeMakerApi;
 
 namespace CafeteiraEletrica
 {
-    class M4RecipienteDeContencao : RecipienteDeContencao, IPrepararCafe
+    class M4InterfaceDoUsuario : InterfaceDoUsuario, IPrepararCafe
     {
         private ICoffeeMakerApi _api;
 
-        protected internal override bool EstaPronto => throw new NotImplementedException();
+
         public void Preparando()
         {
             throw new NotImplementedException();

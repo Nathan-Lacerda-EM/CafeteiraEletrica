@@ -30,7 +30,7 @@ namespace CafeteiraEletrica.Teste.Steps
         [Given(@"um recipiente de contenção")]
         public void GivenUmRecipienteDeContencao()
         {
-            _recipienteDeContencao = new M4RecipienteDeContencao();
+            _recipienteDeContencao = new M4RecipienteDeContencao(_coffeeMakerApi);
         }
 
         [Given(@"que o recipiente não esteja acoplado")]
@@ -126,7 +126,7 @@ namespace CafeteiraEletrica.Teste.Steps
             Assert.That(_coffeeMakerApi.GetBoilerState(), Is.EqualTo(BoilerState.OFF));
             Assert.That(_coffeeMakerApi.GetWarmerPlateStatus(), Is.EqualTo(WarmerPlateStatus.WARMER_EMPTY));
             Assert.That(_coffeeMakerApi.GetWarmerState(), Is.EqualTo(WarmerState.OFF));
-            Assert.That(_coffeeMakerApi.GetReliefValveState(), Is.EqualTo(ReliefValveState.OPEN));
+            Assert.That(_coffeeMakerApi.GetReliefValveState(), Is.EqualTo(ReliefValveState.CLOSED));
             Assert.That(_coffeeMakerApi.GetIndicatorState(), Is.EqualTo(IndicatorState.OFF));
             Assert.That(_coffeeMakerApi.GetBrewButtonStatus(), Is.EqualTo(BrewButtonStatus.PUSHED));
         }

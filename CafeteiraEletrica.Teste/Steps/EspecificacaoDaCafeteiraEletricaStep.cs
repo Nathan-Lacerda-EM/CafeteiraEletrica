@@ -10,7 +10,7 @@ namespace CafeteiraEletrica.Teste.Steps
     {
         private CoffeeMakerApiStub _coffeeMakerApi = new CoffeeMakerApiStub();
         private M4FonteDeAguaQuente _fonteDeAguaQuente;
-
+        private M4RecipienteDeContencao _recipienteDeContencao;
 
         [Given(@"uma fonte de água quente")]
         public void GivenUmaFonteDeAguaQuente()

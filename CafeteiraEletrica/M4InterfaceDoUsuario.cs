@@ -16,11 +16,18 @@ namespace CafeteiraEletrica
             _api = api;
         }
 
-        public void Preparando()
+        public void Preparar()
         {
-            if(_api.GetBrewButtonStatus() == BrewButtonStatus.PUSHED)
+            if(_api.GetBrewButtonStatus() == BrewButtonStatus.PUSHED && 
+                _api.GetBoilerStatus() == BoilerStatus.NOT_EMPTY && 
+                !(_api.GetWarmerPlateStatus() == WarmerPlateStatus.WARMER_EMPTY))
             {
                 Iniciar();
+                _api.SetIndicatorState(IndicatorState.ON);
+            } else
+            {
+                Parar();
+                _api.SetIndicatorState(IndicatorState.OFF);
             }
         }
     }

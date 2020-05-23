@@ -20,9 +20,10 @@ namespace CafeteiraEletrica
         {
             get => _api.GetBoilerStatus() == BoilerStatus.NOT_EMPTY;
         }
-        public void Preparando()
+        public override void Preparar()
         {
-            throw new NotImplementedException();
+            _api.SetBoilerState(BoilerState.ON);
+            _api.SetReliefValveState(ReliefValveState.CLOSED);
         }
     }
 }

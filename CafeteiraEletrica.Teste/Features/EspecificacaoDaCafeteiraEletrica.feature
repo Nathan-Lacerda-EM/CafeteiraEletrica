@@ -7,7 +7,7 @@ Cenário: O preparo de café e iniciado com falha
 	E que a fonte não contém água
 	Dado um recipiente de contenção
 	E que o recipiente não esteja acoplado
-	Dada um interface de usuario 
+	Dada um interface de usuario
 	E pressionado o botão de inicio
 	Quando iniciado o preparo do café
 	Então o preparo do café não e iniciado

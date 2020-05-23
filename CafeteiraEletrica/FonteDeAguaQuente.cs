@@ -11,9 +11,14 @@ namespace CafeteiraEletrica
         private RecipienteDeContencao _recipienteDeContencao;
         private InterfaceDoUsuario _interfaceDoUsuario;
 
+        public void Iniciar(InterfaceDoUsuario interfaceUsuario, RecipienteDeContencao recipienteDeContencao)
+        {
+            _interfaceDoUsuario = interfaceUsuario;
+            _recipienteDeContencao = recipienteDeContencao;
+        }
+
         protected internal abstract bool EstaPronto { get; }
 
-        public void Preparando() { }
-
+        protected abstract void Preparar();
     }
 }

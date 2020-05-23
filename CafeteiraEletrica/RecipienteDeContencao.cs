@@ -11,6 +11,14 @@ namespace CafeteiraEletrica
         private FonteDeAguaQuente _fonteDeAguaQuente;
         private InterfaceDoUsuario _interfaceDoUsuario;
 
+        public void Iniciar(InterfaceDoUsuario interfaceDoUsuario, FonteDeAguaQuente fonteDeAguaQuente)
+        {
+            _interfaceDoUsuario = interfaceDoUsuario;
+            _fonteDeAguaQuente = fonteDeAguaQuente;
+        }
+
         protected internal abstract bool EstaPronto { get; }
+
+        public abstract void Preparar();
     }
 }

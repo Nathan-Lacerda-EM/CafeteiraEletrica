@@ -8,6 +8,6 @@ namespace CafeteiraEletrica
 {
     public interface IPrepararCafe
     {
-        void Preparando();
+        void Preparar();
     }
 }

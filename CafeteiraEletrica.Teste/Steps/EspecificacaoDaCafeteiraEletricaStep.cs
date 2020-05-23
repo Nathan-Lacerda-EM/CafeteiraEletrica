@@ -1,8 +1,6 @@
 using CafeteiraEletrica.Teste.Stubs;
 using CoffeeMakerApi;
 using NUnit.Framework;
-using System;
-using System.Linq.Expressions;
 using TechTalk.SpecFlow;
 
 namespace CafeteiraEletrica.Teste.Steps
@@ -18,7 +16,7 @@ namespace CafeteiraEletrica.Teste.Steps
         [Given(@"uma fonte de água quente")]
         public void GivenUmaFonteDeAguaQuente()
         {
-            _fonteDeAguaQuente =  new M4FonteDeAguaQuente();
+            _fonteDeAguaQuente =  new M4FonteDeAguaQuente(_coffeeMakerApi);
         }
 
         [Given(@"que a fonte não contém água")]
@@ -30,7 +28,7 @@ namespace CafeteiraEletrica.Teste.Steps
         [Given(@"um recipiente de contenção")]
         public void GivenUmRecipienteDeContencao()
         {
-            _recipienteDeContencao = new M4RecipienteDeContencao();
+            _recipienteDeContencao = new M4RecipienteDeContencao(_coffeeMakerApi);
         }
 
         [Given(@"que o recipiente não esteja acoplado")]
@@ -54,6 +52,8 @@ namespace CafeteiraEletrica.Teste.Steps
         [When(@"iniciado o preparo do café")]
         public void GivenIniciadoOPreparoDoCafe()
         {
+
+            _interfaceDoUsuario.Inicia(_fonteDeAguaQuente, _recipienteDeContencao);
             _interfaceDoUsuario.Preparando();
         }
 

@@ -11,6 +11,12 @@ namespace CafeteiraEletrica
         private FonteDeAguaQuente _fonteDeAguaQuente;
         private RecipienteDeContencao _recipienteDeContencao;
 
+        public void Inicia(FonteDeAguaQuente fonteDeAguaQuente, RecipienteDeContencao recipienteDeContencao)
+        {
+            _fonteDeAguaQuente = fonteDeAguaQuente;
+            _recipienteDeContencao = recipienteDeContencao;
+        }
+
         protected void Iniciar()
         {
             if (_fonteDeAguaQuente.EstaPronto && _recipienteDeContencao.EstaPronto)
@@ -18,6 +24,5 @@ namespace CafeteiraEletrica
 
             }
         }
-
     }
 }

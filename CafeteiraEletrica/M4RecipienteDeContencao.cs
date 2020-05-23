@@ -11,7 +11,12 @@ namespace CafeteiraEletrica
     {
         private ICoffeeMakerApi _api;
 
-        protected internal override bool EstaPronto => throw new NotImplementedException();
+        public M4RecipienteDeContencao(ICoffeeMakerApi api)
+        {
+            _api = api;
+        }
+
+        protected internal override bool EstaPronto => _api.GetWarmerPlateStatus() == WarmerPlateStatus.POT_EMPTY;
         public void Preparando()
         {
             throw new NotImplementedException();

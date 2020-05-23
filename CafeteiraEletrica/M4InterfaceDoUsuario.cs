@@ -23,5 +23,24 @@ namespace CafeteiraEletrica
                 Iniciar();
             }
         }
+
+        public override void AlteraStatusIndicador()
+        {
+            _api.SetIndicatorState(IndicatorState.OFF);
+        }
+
+        public override void InterrompaExecucao()
+        {
+            _api.SetBoilerState(BoilerState.OFF);
+            _api.SetWarmerState(WarmerState.OFF);
+            _api.SetReliefValveState(ReliefValveState.OPEN);
+        }
+
+        public override void RetornaExecucao()
+        {
+            _api.SetBoilerState(BoilerState.ON);
+            _api.SetWarmerState(WarmerState.ON);
+            _api.SetReliefValveState(ReliefValveState.CLOSED);
+        }
     }
 }

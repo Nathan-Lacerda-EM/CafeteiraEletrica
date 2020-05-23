@@ -13,6 +13,8 @@ namespace CafeteiraEletrica
 
         protected internal abstract bool EstaPronto { get; }
 
+        internal abstract void IniciaFluxo();
 
+        public abstract void FimPreparo();
     }
 }

@@ -12,5 +12,7 @@ namespace CafeteiraEletrica
         private InterfaceDoUsuario _interfaceDoUsuario;
 
         protected internal abstract bool EstaPronto { get; }
+
+        internal abstract void IniciaFluxo();
     }
 }

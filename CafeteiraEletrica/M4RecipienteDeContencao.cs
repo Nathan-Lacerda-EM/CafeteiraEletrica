@@ -32,5 +32,10 @@ namespace CafeteiraEletrica
         {
             throw new NotImplementedException();
         }
+
+        internal override void IniciaFluxo()
+        {
+            
+        }
     }
 }

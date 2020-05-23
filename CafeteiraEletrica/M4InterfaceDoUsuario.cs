@@ -7,7 +7,7 @@ using CoffeeMakerApi;
 
 namespace CafeteiraEletrica
 {
-    class M4InterfaceDoUsuario : InterfaceDoUsuario, IPrepararCafe
+    public class M4InterfaceDoUsuario : InterfaceDoUsuario, IPrepararCafe
     {
         private ICoffeeMakerApi _api;
 

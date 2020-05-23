@@ -11,6 +11,7 @@ namespace CafeteiraEletrica.Teste.Steps
         private M4FonteDeAguaQuente _fonteDeAguaQuente;
         private CoffeeMakerApiStub _coffeeMakerApiStub = new CoffeeMakerApiStub();
         private M4RecipienteDeContencao _recipienteDeContencao;
+        private M4InterfaceDoUsuario _interfaceDoUsuario;
 
 
         [Given(@"uma fonte de água quente")]
@@ -40,7 +41,7 @@ namespace CafeteiraEletrica.Teste.Steps
         [Given(@"um interface de usuario")]
         public void GivenUmInterfaceDeUsuario()
         {
-            throw new PendingStepException();
+            _interfaceDoUsuario = new M4InterfaceDoUsuario();
         }
 
         [Given(@"que o preparo do café foi iniciado")]

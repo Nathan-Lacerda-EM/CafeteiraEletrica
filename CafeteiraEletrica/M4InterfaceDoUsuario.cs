@@ -11,7 +11,6 @@ namespace CafeteiraEletrica
     {
         private ICoffeeMakerApi _api;
 
-
         public void Preparando()
         {
             throw new NotImplementedException();

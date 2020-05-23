@@ -7,6 +7,7 @@ namespace CafeteiraEletrica.Teste.Steps
     [Binding]
     public class EspecificacaoDaCafeteiraEletricaStep
     {
+        private CoffeeMakerApiStub _coffeeMakerApi = new CoffeeMakerApiStub();
         private M4FonteDeAguaQuente _fonteDeAguaQuente;
 
         [Given(@"uma fonte de água quente")]
@@ -18,7 +19,7 @@ namespace CafeteiraEletrica.Teste.Steps
         [Given(@"que a fonte não contém água")]
         public void GivenQueAFonteNaoContemAgua()
         {
-            throw new PendingStepException();
+            _coffeeMakerApi.SetBoilerStatus(CoffeeMakerApi.BoilerStatus.EMPTY);
         }
 
         [Given(@"um recipiente de contenção")]

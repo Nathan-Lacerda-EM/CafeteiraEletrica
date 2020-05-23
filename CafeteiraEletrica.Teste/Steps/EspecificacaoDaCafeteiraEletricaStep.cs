@@ -7,10 +7,12 @@ namespace CafeteiraEletrica.Teste.Steps
     [Binding]
     public class EspecificacaoDaCafeteiraEletricaStep
     {
+        private M4FonteDeAguaQuente _fonteDeAguaQuente;
+
         [Given(@"uma fonte de água quente")]
         public void GivenUmaFonteDeAguaQuente()
         {
-            
+            _fonteDeAguaQuente =  new M4FonteDeAguaQuente();
         }
 
         [Given(@"que a fonte não contém água")]

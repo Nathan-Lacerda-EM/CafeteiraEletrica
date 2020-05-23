@@ -7,9 +7,9 @@ using CoffeeMakerApi;
 
 namespace CafeteiraEletrica
 {
-    class M4FonteDeAguaQuente : FonteDeAguaQuente, IPrepararCafe
+    public class M4FonteDeAguaQuente : FonteDeAguaQuente, IPrepararCafe
     {
-        protected internal override bool EstaPronto => throw new NotImplementedException();
+        protected internal override bool EstaPronto { get; }
         public void Preparando()
         {
             throw new NotImplementedException();

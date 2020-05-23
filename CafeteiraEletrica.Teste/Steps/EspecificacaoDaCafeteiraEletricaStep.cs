@@ -18,7 +18,7 @@ namespace CafeteiraEletrica.Teste.Steps
         [Given(@"uma fonte de água quente")]
         public void GivenUmaFonteDeAguaQuente()
         {
-            _fonteDeAguaQuente = new M4FonteDeAguaQuente();
+            _fonteDeAguaQuente = new M4FonteDeAguaQuente(_coffeeMakerApi);
         }
 
         [Given(@"que a fonte não contém água")]
@@ -78,6 +78,7 @@ namespace CafeteiraEletrica.Teste.Steps
         [When(@"iniciado o preparo de cafe")]
         public void QuandoIniciadoOPreparoDeCafe()
         {
+            _interfaceDoUsuario.Inicio(_fonteDeAguaQuente, _recipienteDeContencao);
             _interfaceDoUsuario.Preparando();
         }
 

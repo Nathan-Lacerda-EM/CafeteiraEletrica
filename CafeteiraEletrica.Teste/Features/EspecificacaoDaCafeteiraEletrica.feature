@@ -8,7 +8,8 @@ Cenário: O preparo de café e iniciado com falha
 	Dado um recipiente de contenção
 	E que o recipiente não esteja acoplado
 	Dada um interface de usuario 
-	Quando precionado o botão de inicio na interface de usuario
+	E pressionado o botão de inicio
+	Quando inicado o preparo de café
 	Então o preparo do café não e iniciado
 
 Cenário: O preparo do café e iniciado
@@ -17,7 +18,7 @@ Cenário: O preparo do café e iniciado
 	Dado um recipiente de contenção
 	E que o recipiente não esteja acoplado
 	Dada um interface de usuario 
-	Quando o usuario precionar o botão de inicio
+	Quando pressionado o botão de inicio
 	Então o preparo do café e iniciado
 
 Cenário: Extração do recipiente de conteção

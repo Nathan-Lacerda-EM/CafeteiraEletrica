@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CafeteiraEletrica
 {
-    abstract class RecipienteDeContencao
+    public abstract class RecipienteDeContencao
     {
         private FonteDeAguaQuente _fonteDeAguaQuente;
         private InterfaceDoUsuario _interfaceDoUsuario;

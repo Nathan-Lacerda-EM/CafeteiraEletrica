@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace CafeteiraEletrica
 {
-    abstract class InterfaceDoUsuario
+    public abstract class InterfaceDoUsuario
     {
         private FonteDeAguaQuente _fonteDeAguaQuente;
         private RecipienteDeContencao _recipienteDeContencao;
 
-        void Iniciar()
+        protected void Iniciar()
         {
             if (_fonteDeAguaQuente.EstaPronto && _recipienteDeContencao.EstaPronto)
             {
-
+                
             }
         }
 

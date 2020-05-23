@@ -1,3 +1,6 @@
+using CafeteiraEletrica.Teste.Stubs;
+using CoffeeMakerApi;
+using NUnit.Framework;
 using System;
 using TechTalk.SpecFlow;
 
@@ -6,34 +9,40 @@ namespace CafeteiraEletrica.Teste.Steps
     [Binding]
     public class EspecificacaoDaCafeteiraEletricaStep
     {
+        private M4FonteDeAguaQuente _fonteDeAguaQuente;
+        private M4RecipienteDeContencao _recipienteDeContencao;
+        private M4InterfaceDoUsuario _interfaceDoUsuario;
+
+        private CoffeeMakerApiStub _coffeeMakerApi = new CoffeeMakerApiStub();
+
         [Given(@"uma fonte de água quente")]
         public void GivenUmaFonteDeAguaQuente()
         {
-            throw new PendingStepException();
+            _fonteDeAguaQuente = new M4FonteDeAguaQuente();
         }
 
         [Given(@"que a fonte não contém água")]
         public void GivenQueAFonteNaoContemAgua()
         {
-            throw new PendingStepException();
+            _coffeeMakerApi.SetBoilerStatus(BoilerStatus.EMPTY);
         }
 
         [Given(@"um recipiente de contenção")]
         public void GivenUmRecipienteDeContencao()
         {
-            throw new PendingStepException();
+            _recipienteDeContencao = new M4RecipienteDeContencao();
         }
 
         [Given(@"que o recipiente não esteja acoplado")]
         public void GivenQueORecipienteNaoEstejaAcoplado()
         {
-            throw new PendingStepException();
+            _coffeeMakerApi.SetWarmerPlateStatus(WarmerPlateStatus.WARMER_EMPTY);
         }
 
         [Given(@"um interface de usuario")]
         public void GivenUmInterfaceDeUsuario()
         {
-            throw new PendingStepException();
+            _interfaceDoUsuario = new M4InterfaceDoUsuario(_coffeeMakerApi);
         }
 
         [Given(@"que o preparo do café foi iniciado")]
@@ -60,11 +69,18 @@ namespace CafeteiraEletrica.Teste.Steps
             throw new PendingStepException();
         }
 
-        [When(@"precionado o botão de inicio na interface de usuario")]
-        public void WhenPrecionadoOBotaoDeInicioNaInterfaceDeUsuario()
+        [Given(@"precionando o botão de inicio")]
+        public void DadoPrecionandoOBotaoDeInicio()
         {
-            throw new PendingStepException();
+            _coffeeMakerApi.SetBrewButtonStatus(BrewButtonStatus.PUSHED);
         }
+
+        [When(@"iniciado o preparo de cafe")]
+        public void QuandoIniciadoOPreparoDeCafe()
+        {
+            _interfaceDoUsuario.Preparando();
+        }
+
 
         [When(@"o usuario precionar o botão de inicio")]
         public void WhenOUsuarioPrecionarOBotaoDeInicio()
@@ -95,7 +111,7 @@ namespace CafeteiraEletrica.Teste.Steps
         {
             throw new PendingStepException();
         }
-        
+
         [When(@"identificado que ainda não foi consumido por completo")]
         public void WhenIdentificadoQueAindaNaoFoiConsumidoPorCompleto()
         {
@@ -105,7 +121,13 @@ namespace CafeteiraEletrica.Teste.Steps
         [Then(@"o preparo do café não e iniciado")]
         public void ThenOPreparoDoCafeNaoEIniciado()
         {
-            throw new PendingStepException();
+            Assert.That(_coffeeMakerApi.GetBoilerStatus(), Is.EqualTo(BoilerStatus.EMPTY));
+            Assert.That(_coffeeMakerApi.GetBoilerState(), Is.EqualTo(BoilerState.OFF));
+            Assert.That(_coffeeMakerApi.GetWarmerPlateStatus(), Is.EqualTo(WarmerPlateStatus.WARMER_EMPTY));
+            Assert.That(_coffeeMakerApi.GetWarmerState(), Is.EqualTo(WarmerState.OFF));
+            Assert.That(_coffeeMakerApi.GetReliefValveState(), Is.EqualTo(ReliefValveState.OPEN));
+            Assert.That(_coffeeMakerApi.GetIndicatorState(), Is.EqualTo(IndicatorState.OFF));
+            Assert.That(_coffeeMakerApi.GetBrewButtonStatus(), Is.EqualTo(BrewButtonStatus.PUSHED));
         }
 
         [Then(@"o preparo do café e iniciado")]

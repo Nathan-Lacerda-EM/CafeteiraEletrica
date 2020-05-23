@@ -6,6 +6,7 @@ namespace CafeteiraEletrica.Teste.Steps
     [Binding]
     public class EspecificacaoDaCafeteiraEletricaStep
     {
+
         [Given(@"uma fonte de água quente")]
         public void GivenUmaFonteDeAguaQuente()
         {

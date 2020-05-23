@@ -18,7 +18,7 @@ namespace CafeteiraEletrica.Teste.Steps
         [Given(@"uma fonte de água quente")]
         public void GivenUmaFonteDeAguaQuente()
         {
-            _fonteDeAguaQuente = new M4FonteDeAguaQuente();
+            _fonteDeAguaQuente = new M4FonteDeAguaQuente(_coffeeMakerApiStub);
         }
 
         [Given(@"que a fonte não contém água")]
@@ -30,7 +30,7 @@ namespace CafeteiraEletrica.Teste.Steps
         [Given(@"um recipiente de contenção")]
         public void GivenUmRecipienteDeContencao()
         {
-            _recipienteDeContencao = new M4RecipienteDeContencao();
+            _recipienteDeContencao = new M4RecipienteDeContencao(_coffeeMakerApiStub);
         }
 
         [Given(@"que o recipiente não esteja acoplado")]
@@ -75,9 +75,10 @@ namespace CafeteiraEletrica.Teste.Steps
             _coffeeMakerApiStub.SetBrewButtonStatus(BrewButtonStatus.PUSHED);
         }
 
-        [When(@"inicado o preparo de café")]
-        public void WhenInicadoOPreparoDeCafe()
+        [When(@"iniciado o preparo de café")]
+        public void WhenIniciadoOPreparoDeCafe()
         {
+            _interfaceDoUsuario.Inicio(_fonteDeAguaQuente, _recipienteDeContencao);
             _interfaceDoUsuario.Preparando();
         }
 

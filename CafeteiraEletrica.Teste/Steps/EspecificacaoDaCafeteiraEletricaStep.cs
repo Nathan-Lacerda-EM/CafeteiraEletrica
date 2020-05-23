@@ -1,3 +1,4 @@
+using CafeteiraEletrica.Teste.Stubs;
 using System;
 using TechTalk.SpecFlow;
 
@@ -9,7 +10,7 @@ namespace CafeteiraEletrica.Teste.Steps
         [Given(@"uma fonte de água quente")]
         public void GivenUmaFonteDeAguaQuente()
         {
-            throw new PendingStepException();
+            
         }
 
         [Given(@"que a fonte não contém água")]

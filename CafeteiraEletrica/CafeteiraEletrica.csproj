@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CafeteiraEletrica.cs" />
     <Compile Include="FonteDeAguaQuente.cs" />
     <Compile Include="InterfaceDoUsuario.cs" />
     <Compile Include="IPrepararCafe.cs" />

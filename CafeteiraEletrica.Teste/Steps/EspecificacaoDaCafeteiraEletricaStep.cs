@@ -10,6 +10,7 @@ namespace CafeteiraEletrica.Teste.Steps
     {
         private M4FonteDeAguaQuente _fonteDeAguaQuente;
         private CoffeeMakerApiStub _coffeeMakerApiStub = new CoffeeMakerApiStub();
+        private M4RecipienteDeContencao _recipienteDeContencao;
 
 
         [Given(@"uma fonte de água quente")]
@@ -27,13 +28,13 @@ namespace CafeteiraEletrica.Teste.Steps
         [Given(@"um recipiente de contenção")]
         public void GivenUmRecipienteDeContencao()
         {
-            throw new PendingStepException();
+            _recipienteDeContencao = new M4RecipienteDeContencao();
         }
 
         [Given(@"que o recipiente não esteja acoplado")]
         public void GivenQueORecipienteNaoEstejaAcoplado()
         {
-            throw new PendingStepException();
+            _coffeeMakerApiStub.SetWarmerPlateStatus(WarmerPlateStatus.WARMER_EMPTY);
         }
 
         [Given(@"um interface de usuario")]

@@ -37,5 +37,15 @@ namespace CafeteiraEletrica
         {
             
         }
+
+        internal override void RetomeRecipienteDeContencao()
+        {
+            _api.SetWarmerState(WarmerState.ON);
+        }
+
+        internal override void InterrompaRecipienteDeContencao()
+        {
+            _api.SetWarmerState(WarmerState.OFF);
+        }
     }
 }

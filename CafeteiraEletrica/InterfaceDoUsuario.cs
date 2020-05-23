@@ -23,13 +23,20 @@ namespace CafeteiraEletrica
             {
                 _fonteDeAguaQuente.IniciaFluxo();
                 _recipienteDeContencao.IniciaFluxo();
-                //AlteraStatusIndicador();
             }
         }
 
-        public abstract void InterrompaExecucao();
+        public void InterrompaExecucao()
+        {
+            _fonteDeAguaQuente.InterrompaFonteDeAguaQuente();
+            _recipienteDeContencao.InterrompaRecipienteDeContencao();
+        }
 
-        public abstract void RetornaExecucao();
+        public void RetornaExecucao()
+        {
+            _fonteDeAguaQuente.RetomeFonteDeAguaQuente();
+            _recipienteDeContencao.RetomeRecipienteDeContencao();
+        }
 
         public abstract void AlteraStatusIndicador();
     }

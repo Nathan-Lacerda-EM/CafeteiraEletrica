@@ -8,11 +8,12 @@ namespace CafeteiraEletrica
 {
     public abstract class RecipienteDeContencao
     {
-        private FonteDeAguaQuente _fonteDeAguaQuente;
-        private InterfaceDoUsuario _interfaceDoUsuario;
-
         protected internal abstract bool EstaPronto { get; }
 
         internal abstract void IniciaFluxo();
+
+        internal abstract void RetomeRecipienteDeContencao();
+
+        internal abstract void InterrompaRecipienteDeContencao();
     }
 }

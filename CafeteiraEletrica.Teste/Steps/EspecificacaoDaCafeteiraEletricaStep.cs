@@ -126,7 +126,7 @@ namespace CafeteiraEletrica.Teste.Steps
         [When(@"comcluido o preparo do café")]
         public void WhenComcluidoOPreparoDoCafe()
         {
-            throw new PendingStepException();
+            _coffeeMakerApi.SetBoilerStatus(BoilerStatus.EMPTY);
         }
 
         [When(@"identificado o consumido completo")]

@@ -37,5 +37,22 @@ namespace CafeteiraEletrica
         {
             _api.SetReliefValveState(ReliefValveState.CLOSED);
         }
+
+        internal override void FinalizaPreparo()
+        {
+            _api.SetIndicatorState(IndicatorState.ON);
+        }
+
+        internal override void InterrompaFonteDeAguaQuente()
+        {
+            _api.SetBoilerState(BoilerState.OFF);
+            _api.SetReliefValveState(ReliefValveState.OPEN);
+        }
+
+        internal override void RetomeFonteDeAguaQuente()
+        {
+            _api.SetBoilerState(BoilerState.ON);
+            _api.SetReliefValveState(ReliefValveState.CLOSED);
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace CafeteiraEletrica.Teste.Steps
         private CoffeeMakerApiStub _coffeeMakerApi = new CoffeeMakerApiStub();
         private M4FonteDeAguaQuente _fonteDeAguaQuente;
         private M4RecipienteDeContencao _recipienteDeContencao;
+        private M4InterfaceDoUsuario _interfaceDoUsuario;
 
         [Given(@"uma fonte de água quente")]
         public void GivenUmaFonteDeAguaQuente()
@@ -38,7 +39,19 @@ namespace CafeteiraEletrica.Teste.Steps
         [Given(@"um interface de usuario")]
         public void GivenUmInterfaceDeUsuario()
         {
-            throw new PendingStepException();
+            _interfaceDoUsuario = new M4InterfaceDoUsuario();
+        }
+
+        [Given(@"pressionado o botão de inicio")]
+        public void GivePressionadoOBotaoDeInicio()
+        {
+            _coffeeMakerApi.SetBrewButtonStatus(CoffeeMakerApi.BrewButtonStatus.PUSHED);
+        }
+
+        [When(@"iniciado o preparo do café")]
+        public void GivenIniciadoOPreparoDoCafe()
+        {
+            _interfaceDoUsuario.Preparando();
         }
 
         [Given(@"que o preparo do café foi iniciado")]
@@ -65,7 +78,7 @@ namespace CafeteiraEletrica.Teste.Steps
             throw new PendingStepException();
         }
 
-        [When(@"precionado o botão de inicio na interface de usuario")]
+        [When(@"pressionado o botão de inicio")]
         public void WhenPrecionadoOBotaoDeInicioNaInterfaceDeUsuario()
         {
             throw new PendingStepException();

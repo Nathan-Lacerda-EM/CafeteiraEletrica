@@ -7,18 +7,18 @@ Cenário: O preparo de café e iniciado com falha
 	E que a fonte não contém água
 	Dado um recipiente de contenção
 	E que o recipiente não esteja acoplado
-	Dada um interface de usuario 
+	Dada uma interface de usuario 
 	E precionando o botão de inicio 
 	Quando iniciado o preparo de cafe
 	Então o preparo do café não e iniciado
 
 Cenário: O preparo do café e iniciado
 	Dado uma fonte de água quente
-	E que a fonte não contém água
+	E que a fonte contém água
 	Dado um recipiente de contenção
-	E que o recipiente não esteja acoplado
-	Dada um interface de usuario 
-	Quando o usuario precionar o botão de inicio
+	E que o recipiente esteja acoplado
+	Dada uma interface de usuario 
+	E precionando o botão de inicio
 	Então o preparo do café e iniciado
 
 Cenário: Extração do recipiente de conteção

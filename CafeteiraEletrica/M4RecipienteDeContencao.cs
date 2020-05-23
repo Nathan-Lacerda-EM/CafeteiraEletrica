@@ -11,20 +11,20 @@ namespace CafeteiraEletrica
     {
         private ICoffeeMakerApi _api;
 
-        protected internal override bool EstaPronto => EhParaIniciar(_api);
-
+        protected internal override bool EstaPronto => VerificaInicio(_api);
 
         public M4RecipienteDeContencao(ICoffeeMakerApi api)
         {
             _api = api;
         }
 
-        private bool EhParaIniciar(ICoffeeMakerApi api)
+        private bool VerificaInicio(ICoffeeMakerApi api)
         {
             if(api.GetWarmerPlateStatus().Equals(WarmerPlateStatus.POT_EMPTY))
             {
                 return true;
             }
+
             return false;
         }
 

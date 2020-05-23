@@ -14,7 +14,9 @@ namespace CafeteiraEletrica.Teste.Steps
         private M4InterfaceDoUsuario _interfaceDoUsuario;
 
         private CoffeeMakerApiStub _coffeeMakerApi = new CoffeeMakerApiStub();
-
+       
+        #region Given
+       
         [Given(@"uma fonte de água quente")]
         public void GivenUmaFonteDeAguaQuente()
         {
@@ -39,7 +41,7 @@ namespace CafeteiraEletrica.Teste.Steps
             _coffeeMakerApi.SetWarmerPlateStatus(WarmerPlateStatus.WARMER_EMPTY);
         }
 
-        [Given(@"um interface de usuario")]
+        [Given(@"uma interface de usuario")]
         public void GivenUmInterfaceDeUsuario()
         {
             _interfaceDoUsuario = new M4InterfaceDoUsuario(_coffeeMakerApi);
@@ -74,7 +76,21 @@ namespace CafeteiraEletrica.Teste.Steps
         {
             _coffeeMakerApi.SetBrewButtonStatus(BrewButtonStatus.PUSHED);
         }
+        
+        [Given(@"que a fonte contém água")]
+        public void GivenQueAFonteContemAgua()
+        {
+            _coffeeMakerApi.SetBoilerStatus(BoilerStatus.NOT_EMPTY);
+        }
 
+        [Given(@"que o recipiente esteja acoplado")]
+        public void GivenQueORecipienteEstejaAcoplado()
+        {
+            _coffeeMakerApi.SetWarmerPlateStatus(WarmerPlateStatus.POT_EMPTY);
+        }
+        #endregion
+
+        #region When
         [When(@"iniciado o preparo de cafe")]
         public void QuandoIniciadoOPreparoDeCafe()
         {
@@ -118,7 +134,9 @@ namespace CafeteiraEletrica.Teste.Steps
         {
             throw new PendingStepException();
         }
-
+        #endregion
+       
+        #region Then
         [Then(@"o preparo do café não e iniciado")]
         public void ThenOPreparoDoCafeNaoEIniciado()
         {
@@ -126,7 +144,7 @@ namespace CafeteiraEletrica.Teste.Steps
             Assert.That(_coffeeMakerApi.GetBoilerState(), Is.EqualTo(BoilerState.OFF));
             Assert.That(_coffeeMakerApi.GetWarmerPlateStatus(), Is.EqualTo(WarmerPlateStatus.WARMER_EMPTY));
             Assert.That(_coffeeMakerApi.GetWarmerState(), Is.EqualTo(WarmerState.OFF));
-            Assert.That(_coffeeMakerApi.GetReliefValveState(), Is.EqualTo(ReliefValveState.CLOSED));
+            Assert.That(_coffeeMakerApi.GetReliefValveState(), Is.EqualTo(ReliefValveState.OPEN));
             Assert.That(_coffeeMakerApi.GetIndicatorState(), Is.EqualTo(IndicatorState.OFF));
             Assert.That(_coffeeMakerApi.GetBrewButtonStatus(), Is.EqualTo(BrewButtonStatus.PUSHED));
         }
@@ -134,7 +152,13 @@ namespace CafeteiraEletrica.Teste.Steps
         [Then(@"o preparo do café e iniciado")]
         public void ThenOPreparoDoCafeEIniciado()
         {
-            throw new PendingStepException();
+            Assert.That(_coffeeMakerApi.GetBoilerStatus(), Is.EqualTo(BoilerStatus. NOT_EMPTY));
+            Assert.That(_coffeeMakerApi.GetBoilerState(), Is.EqualTo(BoilerState.ON));
+            Assert.That(_coffeeMakerApi.GetWarmerPlateStatus(), Is.EqualTo(WarmerPlateStatus.POT_EMPTY));
+            Assert.That(_coffeeMakerApi.GetWarmerState(), Is.EqualTo(WarmerState.ON));
+            Assert.That(_coffeeMakerApi.GetReliefValveState(), Is.EqualTo(ReliefValveState.CLOSED));
+            Assert.That(_coffeeMakerApi.GetIndicatorState(), Is.EqualTo(IndicatorState.ON));
+            Assert.That(_coffeeMakerApi.GetBrewButtonStatus(), Is.EqualTo(BrewButtonStatus.PUSHED));
         }
 
         [Then(@"o preparo do café e interrompido")]
@@ -166,5 +190,6 @@ namespace CafeteiraEletrica.Teste.Steps
         {
             throw new PendingStepException();
         }
+        #endregion
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using CafeteiraEletrica.Teste.Stubs;
 using CoffeeMakerApi;
+using NUnit.Framework;
 using TechTalk.SpecFlow;
 
 namespace CafeteiraEletrica.Teste.Steps
@@ -16,7 +17,7 @@ namespace CafeteiraEletrica.Teste.Steps
         [Given(@"uma fonte de água quente")]
         public void GivenUmaFonteDeAguaQuente()
         {
-            _fonteDeAguaQuente = new M4FonteDeAguaQuente();
+            _fonteDeAguaQuente = new M4FonteDeAguaQuente(_coffeeMakerApi);
         }
 
         [Given(@"que a fonte não contém água")]
@@ -28,7 +29,7 @@ namespace CafeteiraEletrica.Teste.Steps
         [Given(@"um recipiente de contenção")]
         public void GivenUmRecipienteDeContencao()
         {
-            throw new PendingStepException();
+            _recipienteDeContencao = new M4RecipienteDeContencao(_coffeeMakerApi);
         }
 
         [Given(@"que o recipiente não esteja acoplado")]
@@ -40,7 +41,7 @@ namespace CafeteiraEletrica.Teste.Steps
         [Given(@"um interface de usuario")]
         public void GivenUmInterfaceDeUsuario()
         {
-            _interfaceDoUsuario = new M4InterfaceDoUsuario();
+            _interfaceDoUsuario = new M4InterfaceDoUsuario(_coffeeMakerApi);
         }
 
         [Given(@"que o preparo do café foi iniciado")]
@@ -76,6 +77,8 @@ namespace CafeteiraEletrica.Teste.Steps
         [When(@"iniciado o preparo do café")]
         public void WhenIniciadoOPreparoDoCafe()
         {
+            _interfaceDoUsuario.Inicio(_fonteDeAguaQuente, _recipienteDeContencao);
+
             _interfaceDoUsuario.Preparando();
         }
 
@@ -112,7 +115,13 @@ namespace CafeteiraEletrica.Teste.Steps
         [Then(@"o preparo do café não e iniciado")]
         public void ThenOPreparoDoCafeNaoEIniciado()
         {
-            throw new PendingStepException();
+            Assert.That(_coffeeMakerApi.GetBoilerStatus(), Is.EqualTo(BoilerStatus.EMPTY));
+            Assert.That(_coffeeMakerApi.GetBoilerState(), Is.EqualTo(BoilerState.OFF));
+            Assert.That(_coffeeMakerApi.GetWarmerPlateStatus(), Is.EqualTo(WarmerPlateStatus.WARMER_EMPTY));
+            Assert.That(_coffeeMakerApi.GetWarmerState(), Is.EqualTo(WarmerState.OFF));
+            Assert.That(_coffeeMakerApi.GetReliefValveState(), Is.EqualTo(ReliefValveState.OPEN));
+            Assert.That(_coffeeMakerApi.GetIndicatorState(), Is.EqualTo(IndicatorState.OFF));
+            Assert.That(_coffeeMakerApi.GetBrewButtonStatus(), Is.EqualTo(BrewButtonStatus.PUSHED));
         }
 
         [Then(@"o preparo do café e iniciado")]

@@ -9,8 +9,20 @@ namespace CafeteiraEletrica
 {
     public class M4FonteDeAguaQuente : FonteDeAguaQuente, IPrepararCafe
     {
-        protected internal override bool EstaPronto { get; }
-        
+        private readonly ICoffeeMakerApi _api;
+
+        public M4FonteDeAguaQuente(ICoffeeMakerApi api)
+        {
+            _api = api;
+        }
+
+        protected internal override bool EstaPronto
+        {
+            get {
+                return _api.GetBoilerStatus() == BoilerStatus.NOT_EMPTY;
+            }
+        }
+
         public void Preparando()
         {
             throw new NotImplementedException();

@@ -33,7 +33,7 @@ namespace CafeteiraEletrica.Teste.Steps
         [Given(@"que o recipiente não esteja acoplado")]
         public void GivenQueORecipienteNaoEstejaAcoplado()
         {
-            throw new PendingStepException();
+            _coffeeMakerApi.SetWarmerPlateStatus(WarmerPlateStatus.WARMER_EMPTY);
         }
 
         [Given(@"um interface de usuario")]

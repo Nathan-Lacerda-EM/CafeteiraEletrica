@@ -67,16 +67,16 @@ namespace CafeteiraEletrica.Teste.Steps
             throw new PendingStepException();
         }
 
-        [When(@"precionado o botão de inicio na interface de usuario")]
-        public void WhenPrecionadoOBotaoDeInicioNaInterfaceDeUsuario()
+        [Given(@"precionado o botão de inicio")]
+        public void GivenPrecionadoOBotaoDeInicio()
         {
-            throw new PendingStepException();
+            _coffeeMakerApi.SetBrewButtonStatus(BrewButtonStatus.PUSHED);
         }
 
-        [When(@"o usuario precionar o botão de inicio")]
-        public void WhenOUsuarioPrecionarOBotaoDeInicio()
+        [When(@"iniciado o preparo do café")]
+        public void WhenIniciadoOPreparoDoCafe()
         {
-            throw new PendingStepException();
+            _interfaceDoUsuario.Preparando();
         }
 
         [When(@"o recipiente de conteção e extraido")]

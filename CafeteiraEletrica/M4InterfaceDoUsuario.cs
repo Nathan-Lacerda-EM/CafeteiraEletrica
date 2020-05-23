@@ -24,5 +24,9 @@ namespace CafeteiraEletrica
             }
         }
 
+        protected override void ComecarFluxoCafe()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

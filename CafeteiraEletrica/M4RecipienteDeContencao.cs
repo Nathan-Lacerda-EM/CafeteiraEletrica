@@ -21,13 +21,30 @@ namespace CafeteiraEletrica
         {
             get
             {
-                return _api.GetWarmerPlateStatus() == WarmerPlateStatus.WARMER_EMPTY;
+                return _api.GetWarmerPlateStatus() == WarmerPlateStatus.POT_EMPTY;
             }
         }
             
         public void Preparando()
         {
             throw new NotImplementedException();
+        }
+
+        internal override void IniciarFluxo()
+        {
+            _api.SetWarmerState(WarmerState.ON);
+        }
+
+        public void RecipienteRemovido()
+        {
+            _api.SetBoilerState(BoilerState.OFF);
+            _api.SetReliefValveState(ReliefValveState.OPEN);
+        }
+
+        public void RecipienteInserido()
+        {
+            _api.SetBoilerState(BoilerState.ON);
+            _api.SetReliefValveState(ReliefValveState.CLOSED);            
         }
     }
 }

@@ -14,9 +14,9 @@ Cenário: O preparo de café e iniciado com falha
 
 Cenário: O preparo do café e iniciado
 	Dado uma fonte de água quente
-	E que a fonte não contém água
+	E que a fonte contém água
 	Dado um recipiente de contenção
-	E que o recipiente não esteja acoplado
+	E que o recipiente esteja acoplado
 	Dada um interface de usuario 
 	E pressionado o botão de inicio
 	Quando iniciado o preparo de café
@@ -33,7 +33,7 @@ Cenário: Devolução do recipiente de conteção
 	Então o preparo do café e retomado
 
 Cenário: Preparado e pronto para consumo
-	Dado o preparo do café e iniciado
+	Dado que o preparo do café foi iniciado
 	Quando comcluido o preparo do café
 	Então o café está pronto para o consumo
 	E mantido aquecido até ser consumo por completo

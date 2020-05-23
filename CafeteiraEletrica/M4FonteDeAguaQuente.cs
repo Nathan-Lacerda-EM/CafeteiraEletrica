@@ -21,12 +21,19 @@ namespace CafeteiraEletrica
         {
             get
             {
-                return _api.GetBoilerStatus() == BoilerStatus.EMPTY;
+                return _api.GetBoilerStatus() == BoilerStatus.NOT_EMPTY;
             }
         }
+
         public void Preparando()
         {
             throw new NotImplementedException();
+        }
+
+        internal override void IniciarFluxo()
+        {
+            _api.SetBoilerState(BoilerState.ON);
+            _api.SetReliefValveState(ReliefValveState.CLOSED);
         }
     }
 }

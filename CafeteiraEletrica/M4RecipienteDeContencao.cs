@@ -31,7 +31,7 @@ namespace CafeteiraEletrica
 
         public void Poll()
         {
-            if (EstaEsquentando)
+            if (EstaPreparando)
                 if (_api.GetWarmerPlateStatus() == WarmerPlateStatus.WARMER_EMPTY)
                     Parar();
                 else if (_api.GetBoilerStatus() == BoilerStatus.EMPTY && _api.GetWarmerPlateStatus() == WarmerPlateStatus.POT_EMPTY)

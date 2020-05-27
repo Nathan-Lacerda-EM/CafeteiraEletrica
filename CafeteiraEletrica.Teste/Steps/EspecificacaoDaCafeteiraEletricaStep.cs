@@ -149,12 +149,14 @@ namespace CafeteiraEletrica.Teste.Steps
         public void WhenIdentificadoOConsumidoCompleto()
         {
             _coffeeMakerApi.SetWarmerPlateStatus(WarmerPlateStatus.POT_EMPTY);
+            Poll();
         }
         
         [When(@"identificado que ainda não foi consumido por completo")]
         public void WhenIdentificadoQueAindaNaoFoiConsumidoPorCompleto()
         {
-            throw new PendingStepException();
+            _coffeeMakerApi.SetWarmerPlateStatus(WarmerPlateStatus.POT_NOT_EMPTY);
+            Poll();
         }
         #endregion
 

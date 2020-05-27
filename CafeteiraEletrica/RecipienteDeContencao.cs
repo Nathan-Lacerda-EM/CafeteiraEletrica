@@ -10,6 +10,15 @@ namespace CafeteiraEletrica
     {
         private FonteDeAguaQuente _fonteDeAguaQuente;
         private InterfaceDoUsuario _interfaceDoUsuario;
+        protected internal bool EstaEsquentando;
+        protected internal bool CicloCompletoEPotVazio;
+        protected internal abstract bool EstaPronto { get; }
+
+        public RecipienteDeContencao()
+        {
+            EstaEsquentando = false;
+            CicloCompletoEPotVazio = true;
+        }
 
         public void Iniciar(InterfaceDoUsuario interfaceDoUsuario, FonteDeAguaQuente fonteDeAguaQuente)
         {
@@ -17,8 +26,24 @@ namespace CafeteiraEletrica
             _fonteDeAguaQuente = fonteDeAguaQuente;
         }
 
-        protected internal abstract bool EstaPronto { get; }
+        public void Completar()
+        {
+            _interfaceDoUsuario.FinalizarCiclo();
+            CicloCompletoEPotVazio = true;
+        }
 
-        public abstract void Preparar();
+        public void CafePronto()
+        {
+            _interfaceDoUsuario.Pronto();
+            Continuar();
+        }
+
+        public void Preparar()
+        {
+            EstaEsquentando = true;
+        }
+
+        public abstract void Parar();
+        public abstract void Continuar();
     }
 }

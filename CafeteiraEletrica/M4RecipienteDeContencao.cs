@@ -8,31 +8,38 @@ using CoffeeMakerApi;
 
 namespace CafeteiraEletrica
 {
-    public class M4RecipienteDeContencao : RecipienteDeContencao, IPrepararCafe
+    public class M4RecipienteDeContencao : RecipienteDeContencao, IPrepararCafe, IPollable
     {
         private ICoffeeMakerApi _api;
-        private bool EstaPreparando = false;
 
         public M4RecipienteDeContencao(ICoffeeMakerApi api)
         {
             _api = api;
         }
 
-        protected internal override bool EstaPronto => _api.GetWarmerPlateStatus() == WarmerPlateStatus.POT_EMPTY;
+        protected internal override bool EstaPronto => _api.GetWarmerPlateStatus() != WarmerPlateStatus.WARMER_EMPTY;
 
-        public override void Preparar()
+        public override void Parar()
         {
-            EstaPreparando = true;
+            _api.SetWarmerState(WarmerState.OFF);
+        }
+
+        public override void Continuar()
+        {
             _api.SetWarmerState(WarmerState.ON);
         }
 
-        public void RecipienteRemovido()
+        public void Poll()
         {
-            if(!EstaPreparando)
-            {
-                _api.SetWarmerState(WarmerState.OFF);
-                InterromperFluxo();
-            }
+            if (EstaEsquentando)
+                if (_api.GetWarmerPlateStatus() == WarmerPlateStatus.WARMER_EMPTY)
+                    Parar();
+                else if (_api.GetBoilerStatus() == BoilerStatus.EMPTY && _api.GetWarmerPlateStatus() == WarmerPlateStatus.POT_EMPTY)
+                    Completar();
+                else if (_api.GetBoilerStatus() == BoilerStatus.EMPTY && _api.GetWarmerPlateStatus() == WarmerPlateStatus.POT_NOT_EMPTY)
+                    CafePronto();
+                else
+                    Continuar();
         }
     }
 }

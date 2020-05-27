@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeMakerApi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,13 @@ namespace CafeteiraEletrica
     {
         private RecipienteDeContencao _recipienteDeContencao;
         private InterfaceDoUsuario _interfaceDoUsuario;
+        protected internal bool EstaFazendo;
+        protected internal abstract bool EstaPronto { get; }
+
+        public FonteDeAguaQuente()
+        {
+            EstaFazendo = false;
+        }
 
         public void Iniciar(InterfaceDoUsuario interfaceUsuario, RecipienteDeContencao recipienteDeContencao)
         {
@@ -17,8 +25,15 @@ namespace CafeteiraEletrica
             _recipienteDeContencao = recipienteDeContencao;
         }
 
-        protected internal abstract bool EstaPronto { get; }
+        public void Pronto()
+        {
+            EstaFazendo = false;
+            Parar();
+            _interfaceDoUsuario.Pronto();
+        }
 
-        protected abstract void Preparar();
+        public abstract void Preparar();
+        public abstract void Parar();
+        public abstract void Continuar();
     }
 }

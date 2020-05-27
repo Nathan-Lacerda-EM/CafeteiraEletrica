@@ -7,7 +7,7 @@ using CoffeeMakerApi;
 
 namespace CafeteiraEletrica
 {
-    public class M4InterfaceDoUsuario : InterfaceDoUsuario, IPrepararCafe
+    public class M4InterfaceDoUsuario : InterfaceDoUsuario, IPollable
     {
         private ICoffeeMakerApi _api;
 
@@ -16,19 +16,20 @@ namespace CafeteiraEletrica
             _api = api;
         }
 
-        public void Preparar()
+        public void Poll()
         {
-            if(_api.GetBrewButtonStatus() == BrewButtonStatus.PUSHED && 
-                _api.GetBoilerStatus() == BoilerStatus.NOT_EMPTY && 
-                !(_api.GetWarmerPlateStatus() == WarmerPlateStatus.WARMER_EMPTY))
-            {
-                Iniciar();
-                _api.SetIndicatorState(IndicatorState.ON);
-            } else
-            {
-                Parar();
-                _api.SetIndicatorState(IndicatorState.OFF);
-            }
+            if(_api.GetBrewButtonStatus() == BrewButtonStatus.PUSHED)
+                Preparar();
+        }
+
+        public override void Pronto()
+        {
+            _api.SetIndicatorState(IndicatorState.ON);
+        }
+
+        public override void FinalizarCiclo()
+        {
+            _api.SetIndicatorState(IndicatorState.OFF);
         }
     }
 }

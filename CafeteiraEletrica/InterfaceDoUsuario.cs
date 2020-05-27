@@ -10,20 +10,30 @@ namespace CafeteiraEletrica
     {
         private FonteDeAguaQuente _fonteDeAguaQuente;
         private RecipienteDeContencao _recipienteDeContencao;
+        protected internal bool CicloCompleto;
 
-        public void Inicia(FonteDeAguaQuente fonteDeAguaQuente, RecipienteDeContencao recipienteDeContencao)
+        public InterfaceDoUsuario()
+        {
+            CicloCompleto = false;
+        }
+
+        public void Iniciar(FonteDeAguaQuente fonteDeAguaQuente, RecipienteDeContencao recipienteDeContencao)
         {
             _fonteDeAguaQuente = fonteDeAguaQuente;
             _recipienteDeContencao = recipienteDeContencao;
         }
 
-        protected void Iniciar()
+        public void Preparar()
         {
             if (_fonteDeAguaQuente.EstaPronto && _recipienteDeContencao.EstaPronto)
             {
                 _fonteDeAguaQuente.Preparar();
                 _recipienteDeContencao.Preparar();
+                CicloCompleto = false;
             }
         }
+
+        public abstract void FinalizarCiclo();
+        public abstract void Pronto();
     }
 }

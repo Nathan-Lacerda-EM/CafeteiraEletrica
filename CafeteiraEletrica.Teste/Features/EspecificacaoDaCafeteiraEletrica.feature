@@ -7,43 +7,43 @@ Cenário: O preparo de café e iniciado com falha
 	E que a fonte não contém água
 	Dado um recipiente de contenção
 	E que o recipiente não esteja acoplado
-	Dada um interface de usuario
-	E pressionado o botão de inicio
+	Dada uma interface de usuário
+	E pressionado o botão de início
 	Quando iniciado o preparo do café
-	Então o preparo do café não e iniciado
+	Então o preparo do café não é iniciado
 
-Cenário: O preparo do café e iniciado
-	Dado uma fonte de água quente
+Cenário: O preparo do café é iniciado
+	Dada uma fonte de água quente
 	E que a fonte contém água
 	Dado um recipiente de contenção
 	E que o recipiente esteja acoplado
-	Dada um interface de usuario
-	E pressionado o botão de inicio
+	Dada uma interface de usuário
+	E pressionado o botão de início
 	Quando iniciado o preparo do café
-	Então o preparo do café e iniciado
+	Então o preparo do café é iniciado
 
-Cenário: Extração do recipiente de conteção
+Cenário: Extração do recipiente de contenção
 	Dado que o preparo do café foi iniciado
-	Quando o recipiente de conteção e extraido
-	Então o preparo do café e interrompido
+	Quando o recipiente de contenção é extraído
+	Então o preparo do café é interrompido
 
-Cenário: Devolução do recipiente de conteção
-	Dado o preparo do café e interrompido
-	Quando o recipiente de conteção e devolvido
-	Então o preparo do café e retomado
+Cenário: Devolução do recipiente de contenção
+	Dado o preparo do café é interrompido
+	Quando o recipiente de contenção é devolvido
+	Então o preparo do café é retomado
 
 Cenário: Preparado e pronto para consumo
-	Dado o preparo do café e iniciado
-	Quando comcluido o preparo do café
+	Dado que o preparo do café foi iniciado
+	Quando concluído o preparo do café
 	Então o café está pronto para o consumo
-	E mantido aquecido até ser consumo por completo
+	E mantido aquecido até ser consumido por completo
 
 Cenário: O café é consumido por completo
 	Dado o café pronto para consumo
-	Quando identificado o consumido completo
-	Então o ciclo de preparo e finalizado
+	Quando identificado o consumo completo
+	Então o ciclo de preparo é finalizado
 
 Cenário: Enquanto não consumido por completo
 	Dado o café pronto para consumo
 	Quando identificado que ainda não foi consumido por completo
-	Então mantido aquecido até ser consumo por completo
+	Então mantido aquecido até ser consumido por completo

@@ -7,7 +7,7 @@ using CoffeeMakerApi;
 
 namespace CafeteiraEletrica
 {
-    public class M4FonteDeAguaQuente : FonteDeAguaQuente, IPrepararCafe, IPollable
+    public class M4FonteDeAguaQuente : FonteDeAguaQuente, IPrepararCafe
     {
         private readonly ICoffeeMakerApi _api;
 
@@ -17,13 +17,6 @@ namespace CafeteiraEletrica
         }
 
         protected internal override bool EstaPronto => _api.GetBoilerStatus() == BoilerStatus.NOT_EMPTY;
-
-        public override void Preparar()
-        {
-            _api.SetBoilerState(BoilerState.ON);
-            _api.SetReliefValveState(ReliefValveState.CLOSED);
-            EstaFazendo = true;
-        }
 
         public override void Parar()
         {
@@ -36,20 +29,15 @@ namespace CafeteiraEletrica
             _api.SetReliefValveState(ReliefValveState.CLOSED);
         }
 
-        public void Poll()
+        public void Preparar()
         {
-            if (EstaFazendo)
-                if (!EstaPronto)
+            if (EstaPreparando)
+                if (_api.GetBoilerStatus() == BoilerStatus.EMPTY)
                 {
+                    _api.SetBoilerState(BoilerState.OFF);
+                    _api.SetReliefValveState(ReliefValveState.CLOSED);
                     Pronto();
                 }
-                else if (_api.GetWarmerPlateStatus() == WarmerPlateStatus.WARMER_EMPTY)
-                    Parar();
-                else
-                {
-                    Continuar();
-                }
         }
-
     }
 }

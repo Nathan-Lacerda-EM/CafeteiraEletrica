@@ -121,6 +121,7 @@
   <ItemGroup>
     <Compile Include="Steps\CicloDeProducaoDeCafeStep.cs" />
     <Compile Include="Steps\EspecificacaoDaCafeteiraEletricaStep.cs" />
+    <Compile Include="Steps\TestesLivro.cs" />
     <Compile Include="Stubs\CoffeeMakerApiStub.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +138,10 @@
     <ProjectReference Include="..\CoffeeMakerApi\CoffeeMakerApi.csproj">
       <Project>{9b961de5-5219-4a36-bf3d-a9acacbb47df}</Project>
       <Name>CoffeeMakerApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoffeeMaker\CoffeeMaker.csproj">
+      <Project>{C3FEB95E-8C68-47E4-B376-0EE26BFBABA9}</Project>
+      <Name>CoffeeMaker</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

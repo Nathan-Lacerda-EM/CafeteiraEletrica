@@ -14,7 +14,7 @@ namespace CafeteiraEletrica
 
         public InterfaceDoUsuario()
         {
-            CicloCompleto = false;
+            CicloCompleto = true;
         }
 
         public void Iniciar(FonteDeAguaQuente fonteDeAguaQuente, RecipienteDeContencao recipienteDeContencao)
@@ -23,12 +23,12 @@ namespace CafeteiraEletrica
             _recipienteDeContencao = recipienteDeContencao;
         }
 
-        public void Preparar()
+        public void IniciarPreparo()
         {
             if (_fonteDeAguaQuente.EstaPronto && _recipienteDeContencao.EstaPronto)
             {
-                _fonteDeAguaQuente.Preparar();
-                _recipienteDeContencao.Preparar();
+                _fonteDeAguaQuente.IniciarPreparo();
+                _recipienteDeContencao.IniciarPreparo();
                 CicloCompleto = false;
             }
         }

@@ -11,12 +11,12 @@ namespace CafeteiraEletrica
     {
         private RecipienteDeContencao _recipienteDeContencao;
         private InterfaceDoUsuario _interfaceDoUsuario;
-        protected internal bool EstaFazendo;
+        protected internal bool EstaPreparando;
         protected internal abstract bool EstaPronto { get; }
 
         public FonteDeAguaQuente()
         {
-            EstaFazendo = false;
+            EstaPreparando = false;
         }
 
         public void Iniciar(InterfaceDoUsuario interfaceUsuario, RecipienteDeContencao recipienteDeContencao)
@@ -25,14 +25,19 @@ namespace CafeteiraEletrica
             _recipienteDeContencao = recipienteDeContencao;
         }
 
-        public void Pronto()
+        public void IniciarPreparo()
         {
-            EstaFazendo = false;
-            Parar();
-            _interfaceDoUsuario.Pronto();
+            EstaPreparando = true;
+            Continuar();
         }
 
-        public abstract void Preparar();
+        public void Pronto()
+        {
+            _recipienteDeContencao.CafePronto();
+            _interfaceDoUsuario.Pronto();
+            EstaPreparando = false;
+        }
+
         public abstract void Parar();
         public abstract void Continuar();
     }

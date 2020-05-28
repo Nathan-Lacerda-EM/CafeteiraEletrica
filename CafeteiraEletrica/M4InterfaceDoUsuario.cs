@@ -7,7 +7,7 @@ using CoffeeMakerApi;
 
 namespace CafeteiraEletrica
 {
-    public class M4InterfaceDoUsuario : InterfaceDoUsuario, IPollable
+    public class M4InterfaceDoUsuario : InterfaceDoUsuario, IPrepararCafe
     {
         private ICoffeeMakerApi _api;
 
@@ -16,10 +16,10 @@ namespace CafeteiraEletrica
             _api = api;
         }
 
-        public void Poll()
+        public void Preparar()
         {
             if(_api.GetBrewButtonStatus() == BrewButtonStatus.PUSHED)
-                Preparar();
+                IniciarPreparo();
         }
 
         public override void Pronto()

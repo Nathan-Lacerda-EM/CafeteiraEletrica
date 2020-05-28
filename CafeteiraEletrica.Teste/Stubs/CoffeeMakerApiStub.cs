@@ -6,7 +6,7 @@ namespace CafeteiraEletrica.Teste.Stubs
     {
         public BrewButtonStatus BrewButtonStatus { private get; set; } = BrewButtonStatus.NOT_PUSHED;
         public BoilerStatus BoilerStatus { private get; set; } = BoilerStatus.EMPTY;
-        public WarmerPlateStatus WarmerPlateStatus { private get; set; } = WarmerPlateStatus.POT_EMPTY;
+        public WarmerPlateStatus WarmerPlateStatus { private get; set; } = WarmerPlateStatus.WARMER_EMPTY;
         public ReliefValveState ReliefValveState { private get; set; } = ReliefValveState.OPEN;
         public IndicatorState IndicatorState { private get; set; } = IndicatorState.OFF;
         public WarmerState WarmerState { private get; set; } = WarmerState.OFF;
@@ -17,9 +17,19 @@ namespace CafeteiraEletrica.Teste.Stubs
             return BoilerStatus;
         }
 
+        private bool buttonPressed;
+
         public BrewButtonStatus GetBrewButtonStatus()
         {
-            return BrewButtonStatus;
+            if (!buttonPressed)
+            {
+                buttonPressed = true;
+                return BrewButtonStatus.PUSHED;
+            }
+            else
+            {
+                return BrewButtonStatus.NOT_PUSHED;
+            }
         }
 
         public WarmerPlateStatus GetWarmerPlateStatus()
